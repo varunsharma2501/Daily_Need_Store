@@ -1,0 +1,46 @@
+{{> product_head}}
+  
+  {{>random products}}
+  <div class="row">
+    {{#each products}}
+
+    <div class="col-md-3">
+      <figure class="card card-product">
+        <div class="img-wrap">
+          <img src="{{ this.cat_img}}">
+
+        </div>
+        <figcaption class="info-wrap">
+          <h6 class="title text-dots">{{this.product_name}}</h6>
+          <div class="action-wrap">
+            <form action="/add-to-cart" method="post">
+              <input type="hidden" name="product_id" value={{this._id}}>
+              <button onclick="myfunction()"   type="submit" class="btn btn-primary btn-sm float-right">Order</button>
+            </form>
+            <div class="price-wrap h5">
+              <span class="price-new">Rs.{{this.product_price}}</span>
+
+            </div>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+    {{/each }}
+  </div>
+  </div>
+  </div>
+  <!--container end-->
+  {{>footer}}
+
+  
+ <script>
+   function myfunction(){  alert("Item Added To Cart");}
+
+ </script>      
+
+
+</body>
+
+
+
+</html>-

@@ -1,0 +1,42 @@
+{{>head}}
+<!-- body -->
+{{>header}}
+{{>header2}}
+<!-- end six_box section -->
+<!-- project section -->
+{{>random cate}}
+<div id="project" class="project">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="titlepage">
+               <h2>Categories</h2>
+            </div>
+         </div>
+      </div>
+     
+      <div class="row">
+         <div class="product_main">
+            {{#each cate}}
+               <div class="project_box ">
+                  <a href="/api/{{this._id}}">
+                      <div class="dark_white_bg"><img src="{{ this.img}}"  />
+                      </div>
+                     <h3 class="cate" style="margin-bottom: 20px; ">{{this.category_type}}</h3>
+                  </a>
+               </div>
+            {{/each}}
+        </div> 
+      <div class="col-md-12">
+      <a class="read_more" href="#">See More</a>
+         </div>
+      </div>
+</div>
+<!-- end project section -->
+{{>footer}}
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Order Details</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .table-header {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        .table-header th {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .table tbody tr:nth-of-type(odd) {
+            background-color: #f8f9fa;
+        }
+
+        .table td,
+        .table th {
+            vertical-align: middle;
+        }
+
+        .table td {
+            font-size: 14px;
+        }
+
+        .status-pending {
+            background-color: #ffc107;
+            color: #fff;
+        }
+
+        .status-approved {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .status-rejected {
+            background-color: #dc3545;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Order Details</h1>
+        <table class="table table-bordered">
+            <thead class="table-header">
+                <tr>
+                    <th>Order ID</th>
+                    <th> Product Details</th>
+                    <th>Total</th>
+                    <th>Time</th>
+                    <th>User ID</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each orderchecks}}
+                <tr>
+                    <td> {{this._id}}</td>
+                    <td>{{#each this.items}}
+
+                        <p>{{this.productName}}({{this.quantity}} )</p>
+
+                        {{/each}}
+                    </td>
+                    <td><i class="fa fa-rupee" style="font-size:14px"></i> {{this.total_price}}</td>
+                    <td>{{this.createdAt}}</td>
+                    <td>
+                        {{this.user}}
+                    </td>
+                    <td>
+                        <form action="/status" method="post"> <button type="submit" name="status" value="{{this._id}}"
+                                class="btn btn-outline-success btn-sm">Deliver</button>
+                        </form>
+                    </td>
+
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
